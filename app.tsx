@@ -18,16 +18,9 @@ class FXComponent extends React.Component<{}, FXComponentState> {
   }
 }
 
-class Direction extends React.Component<DirectionValue, {}> {
-  constructor(props) {
-    super();
-  }
-  render() {
-    if (this.props.val === -1) return <td style={{ color: "red" }}>{"\u25bc"}</td>;
-    if (this.props.val === 1) return <td style={{ color: "green" }}>{"\u25b2"}</td>;
-    return <td></td>;
-  }
-}
+const Direction = ({val = 0}: DirectionValue) => val === -1 ?
+  <td style={{ color: "red" }}>{"\u25bc"}</td> :
+  <td style={{ color: "green" }}>{(val !== 0 ) && "\u25b2"}</td>;
 
 class FXRow extends React.Component<FXRowData, FXRowState> {
   constructor(props: FXRowData) {
