@@ -1,0 +1,14 @@
+body {
+  background-color: #eee;
+  font-size: 24pt;
+}
+table {
+  padding: 2rem;
+}
+td {
+  padding-right: 2rem;
+}
+footer {
+  float:right;
+  font-size:.75rem;
+}
