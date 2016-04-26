@@ -46,7 +46,7 @@ class FXRow extends React.Component<FXRowData, FXRowState> {
     return (
       <tr>
         <td>{this.props.data.currencyPair}</td>
-        <td>{this.props.data.offerBig}<sup>{this.props.data.offerPips}</sup></td>
+        <td>{this.props.data.bidBig}<sup>{this.props.data.bidPips}</sup></td>
         <Direction val={this.state.direction}></Direction>
       </tr>);
   }
