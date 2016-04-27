@@ -12,3 +12,11 @@ footer {
   float:right;
   font-size:.75rem;
 }
+.up::before {
+  content: "\25b2";
+  color: green;
+}
+.down::before {
+  content: "\25bc";
+  color: red; 
+}
