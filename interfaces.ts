@@ -16,6 +16,7 @@ interface FXRow {
 
 interface FXRowState {
   direction: number;
+  changed: boolean;
 }
 
 interface DirectionValue {

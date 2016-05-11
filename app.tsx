@@ -1,7 +1,7 @@
 class FXComponent extends React.Component<{}, FXComponentState> {
   constructor(props) {
     super(props);
-    this.state = {fxRates: []};
+    this.state = { fxRates: [] };
   }
   componentDidMount() {
     io().on("data", data => this.setState({ fxRates: data }));
@@ -20,33 +20,28 @@ class FXComponent extends React.Component<{}, FXComponentState> {
 
 const Direction = ({val = 0}: DirectionValue) => val === -1 ?
   <td style={{ color: "red" }}>{"\u25bc"}</td> :
-  <td style={{ color: "green" }}>{(val !== 0 ) && "\u25b2"}</td>;
+  <td style={{ color: "green" }}>{(val !== 0) && "\u25b2"}</td>;
 
 class FXRow extends React.Component<FXRowData, FXRowState> {
   constructor(props: FXRowData) {
     super(props);
-    this.state = { direction: 0 };
+    this.state = { direction: 0, changed: false };
   }
-  componentDidUpdate(prevProps: FXRowData, prevState) {
-    if (prevState.direction !== this.state.direction) return;
-    const prev = prevProps.data;
-    const latest = this.props.data;
+  componentWillReceiveProps(nextProps: FXRowData) {
+    const { bidBig: prevBidBig, bidPips: prevBidPips } = this.props.data;
+    const { bidBig, bidPips } = nextProps.data;
 
-    const prevBid = +(prev.bidBig + prev.bidPips);
-    const bid = +(latest.bidBig + latest.bidPips);
+    const diff = (prevBidBig + prevBidPips) - (bidBig + bidPips);
 
-    if (prevBid > bid && this.state.direction !== -1)
-      this.setState({ direction: -1 });
-    else if (prevBid < bid && this.state.direction !== 1)
-      this.setState({ direction: 1 });
-
+    this.setState({ changed: !!diff })
+    if (diff) this.setState({ direction: diff < 0 ? -1 : 1 });
   }
 
   render() {
     return (
       <tr>
         <td>{this.props.data.currencyPair}</td>
-        <td>{this.props.data.bidBig}<sup>{this.props.data.bidPips}</sup></td>
+        <td className={"changed-" + this.state.changed}>{this.props.data.bidBig}<sup>{this.props.data.bidPips}</sup></td>
         <Direction val={this.state.direction}></Direction>
       </tr>);
   }
