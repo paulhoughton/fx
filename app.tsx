@@ -31,7 +31,7 @@ class FXRow extends React.Component<FXRowData, FXRowState> {
     const { bidBig: prevBidBig, bidPips: prevBidPips } = this.props.data;
     const { bidBig, bidPips } = nextProps.data;
 
-    const diff = (prevBidBig + prevBidPips) - (bidBig + bidPips);
+    const diff = (bidBig + bidPips) - (prevBidBig + prevBidPips);
 
     this.setState({ changed: !!diff })
     if (diff) this.setState({ direction: diff < 0 ? -1 : 1 });
