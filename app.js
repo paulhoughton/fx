@@ -9,7 +9,7 @@
 
       return h('tr', [
         h('td', row.currencyPair),
-        h('td', [
+        h('td', {className: "changed-"+!!diff}, [
           h('span', row.bidBig),
           h('sup', row.bidPips)
         ]),

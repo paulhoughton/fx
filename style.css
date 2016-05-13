@@ -4,9 +4,10 @@ body {
 }
 table {
   padding: 2rem;
+  border-spacing: 0.5rem 0;
 }
-td {
-  padding-right: 2rem;
+td:first-child {
+  padding-right: 1rem;
 }
 footer {
   float:right;
@@ -19,4 +20,7 @@ footer {
 .down::before {
   content: "\25bc";
   color: red; 
+}
+.changed-true {
+  background-color: #ccc;
 }
