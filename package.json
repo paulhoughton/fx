@@ -18,8 +18,14 @@
   },
   "homepage": "https://github.com/paulhoughton/fx#readme",
   "dependencies": {
-    "express": "^4.13.4",
+    "express": "^4.14.0",
     "request": "^2.72.0",
-    "socket.io": "^1.4.5"
+    "socket.io": "^1.4.6"
+  },
+  "devDependencies": {
+    "@types/react": "^0.14.21-alpha",
+    "@types/react-dom": "^0.14.8-alpha",
+    "@types/socket.io-client": "^1.4.20-alpha",
+    "typescript": "^1.9.0-dev.20160617-1.0"
   }
 }
