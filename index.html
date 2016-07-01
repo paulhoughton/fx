@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+  <div id="root">
+    <table>
+      <tr v-for="row in rows">
+        <td v-text="row.currencyPair"></td>
+        <td v-bind:class="{ 'changed': row.changed }" 
+            v-html="row.bidBig + '<sup>' + row.bidPips + '</sup>'">
+        </td>
+        <td v-if="row.direction" 
+            v-bind:style="{ 'color': row.direction==='up'?'green':'red' }" 
+            v-text="row.direction=='up'?'&#x25b2;':'&#x25bc;'">
+        </td>
+      </tr>
+    </table>
+  </div>
+  <footer>
+    Live Bid Data from <a href="https://www.truefx.com/">truefx</a>
+  </footer>
+  <script src="//cdn.polyfill.io/v2/polyfill.js?features=modernizr:es6object"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
