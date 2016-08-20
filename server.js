@@ -2,7 +2,7 @@ var express = require('express'),
   app = express(),
   http = require('http').Server(app),
   io = require('socket.io')(http),
-  request = require('request');
+  fetch = require('node-fetch');
 
 app.use(express.static(__dirname + '/'));
 
@@ -10,7 +10,7 @@ var fields = ["currencyPair", "timestamp", "bidBig", "bidPips", "offerBig", "off
 var cachedData;
 var connected = 0;
 
-var interval = setInterval(getData, 5000);
+var interval = setInterval(updateData, 5000);
 
 io.on('connection', function (socket) {
   connected++;
@@ -20,19 +20,18 @@ io.on('connection', function (socket) {
   });
 });
 
-getData();
+const processData = (fields, valid) => data => data.split("\n")
+  .map(row => row.split(",")
+  .reduce((acc, val, i) => { acc[fields[i]] = val; return acc }, {}))
+  .filter(obj => obj.hasOwnProperty(valid))
 
-function getData() {
-  request('http://webrates.truefx.com/rates/connect.html?f=csv', function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      var result = body.split("\n")
-        .map(row => row.split(",")
-          .reduce((acc, val, i) => { acc[fields[i]] = val; return acc }, {}))
-        .filter(obj => obj.hasOwnProperty("timestamp"))
-
+function updateData() {
+  fetch('http://webrates.truefx.com/rates/connect.html?f=csv')
+    .then(response=>response.text())
+    .then(processData(fields, "timestamp"))
+    .then(result => {
       cachedData = result;
       io.sockets.emit('data', result);
-    }
   })
 }
 
