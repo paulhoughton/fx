@@ -1,4 +1,4 @@
-![Demo](demo.gif)
+![Demo](https://github.com/paulhoughton/fx/blob/gh-pages/demo.gif)
 
 Data from https://www.truefx.com/ api sent over websockets
 
