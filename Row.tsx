@@ -1,28 +1,10 @@
-class FXComponent extends React.Component<{}, FXComponentState> {
-  constructor(props) {
-    super(props);
-    this.state = { fxRates: [] };
-  }
-  componentDidMount() {
-    io().on("data", data => this.setState({ fxRates: data }));
-  }
-  render() {
-    return (
-      <table>
-        <tbody>
-          {this.state.fxRates.map((rate: FXRow) => (
-            <FXRow key={rate.currencyPair} data={rate}></FXRow>))
-          }
-        </tbody>
-      </table>);
-  }
-}
+import {Component} from 'react';
 
 const Direction = ({val = 0}: DirectionValue) => val === -1 ?
   <td style={{ color: "red" }}>{"\u25bc"}</td> :
   <td style={{ color: "green" }}>{(val !== 0) && "\u25b2"}</td>;
 
-class FXRow extends React.Component<FXRowData, FXRowState> {
+export default class Row extends Component<FXRowData, FXRowState> {
   constructor(props: FXRowData) {
     super(props);
     this.state = { direction: 0, changed: false };
@@ -41,13 +23,10 @@ class FXRow extends React.Component<FXRowData, FXRowState> {
     return (
       <tr>
         <td>{this.props.data.currencyPair}</td>
-        <td className={"changed-" + this.state.changed}>{this.props.data.bidBig}<sup>{this.props.data.bidPips}</sup></td>
+        <td className={"changed-" + this.state.changed}>
+          {this.props.data.bidBig}<sup>{this.props.data.bidPips}</sup>
+        </td>
         <Direction val={this.state.direction}></Direction>
       </tr>);
   }
 }
-
-ReactDOM.render(
-  <FXComponent></FXComponent>,
-  document.getElementById("root")
-);

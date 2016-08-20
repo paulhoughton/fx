@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "build": "rollup -c",
     "start": "node server.js"
   },
   "repository": {
@@ -19,13 +20,15 @@
   "homepage": "https://github.com/paulhoughton/fx#readme",
   "dependencies": {
     "express": "^4.14.0",
-    "request": "^2.72.0",
-    "socket.io": "^1.4.6"
+    "node-fetch": "^1.6.0",
+    "socket.io": "^1.4.8"
   },
   "devDependencies": {
     "@types/react": "^0.14.21-alpha",
     "@types/react-dom": "^0.14.8-alpha",
     "@types/socket.io-client": "^1.4.20-alpha",
-    "typescript": "^1.9.0-dev.20160617-1.0"
+    "rollup": "^0.34.10",
+    "rollup-plugin-typescript": "^0.8.1",
+    "typescript": "^2.1.0-dev.20160820"
   }
 }
