@@ -1,4 +1,4 @@
-import {Component} from 'react';
+import React, {Component} from 'react';
 
 const Direction = ({val = 0}: DirectionValue) => val === -1 ?
   <td style={{ color: "red" }}>{"\u25bc"}</td> :

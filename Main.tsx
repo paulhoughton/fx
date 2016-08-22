@@ -1,5 +1,6 @@
-import {Component} from 'react';
+import React, {Component} from 'react';
 import {render} from 'react-dom';
+import io from 'socket.io-client';
 import Row from './Row';
 
 class FXComponent extends Component<{}, FXComponentState> {
