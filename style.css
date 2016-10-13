@@ -1,0 +1,19 @@
+body {
+  background-color: #eee;
+  font-size: 24pt;
+}
+footer {
+  float:right;
+  font-size:.75rem;
+}
+.currency {
+  display:inline-block;
+  width:160px;
+}
+.value {
+  display:inline-block;
+  width:100px;
+}
+.changed {
+  background-color: #ccc;
+}
