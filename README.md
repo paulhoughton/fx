@@ -3,6 +3,7 @@
 Data from https://www.truefx.com/ api sent over websockets
 
 Also available in other frameworks -
+* [Angular](https://github.com/paulhoughton/fx/tree/angular)
 * [virtual-dom](https://github.com/paulhoughton/fx/tree/virtual-dom)
 * [Vue.js](https://github.com/paulhoughton/fx/tree/vuejs)
 * [Web Components](https://github.com/paulhoughton/fx/tree/webcomponents)
