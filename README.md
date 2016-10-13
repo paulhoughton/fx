@@ -1,6 +1,7 @@
 ![Demo](https://github.com/paulhoughton/fx/blob/gh-pages/demo.gif)
 
-Data from https://www.truefx.com/ api sent over websockets
+Data from https://www.truefx.com/ api sent over websockets (wss://fx.now.sh) [Example](http://output.jsbin.com/sekeyekaji)
+
 
 Also available in other frameworks -
 * [Angular](https://github.com/paulhoughton/fx/tree/angular)
