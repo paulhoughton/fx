@@ -1,15 +1,16 @@
 import typescript from 'rollup-plugin-typescript';
 
 export default {
-  entry: './Main.tsx',
+  entry: './src/Main.tsx',
   dest: './bundle.js',
   format: 'iife',
   plugins: [
     typescript()
   ],
-  external: ['react','react-dom'],
+  external: ['react','react-dom','socket.io-client'],
   globals: {
     react: 'React',
-    'react-dom': 'ReactDOM'
+    'react-dom': 'ReactDOM',
+    'socket.io-client': 'io'
   }
 }
