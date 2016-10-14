@@ -24,11 +24,11 @@
     "socket.io": "^1.4.8"
   },
   "devDependencies": {
-    "@types/react": "^0.14.21-alpha",
-    "@types/react-dom": "^0.14.8-alpha",
-    "@types/socket.io-client": "^1.4.20-alpha",
-    "rollup": "^0.34.10",
+    "@types/react": "^0.14.41",
+    "@types/react-dom": "^0.14.18",
+    "@types/socket.io-client": "^1.4.27",
+    "rollup": "^0.36.3",
     "rollup-plugin-typescript": "^0.8.1",
-    "typescript": "^2.1.0-dev.20160820"
+    "typescript": "^2.0.3"
   }
 }
